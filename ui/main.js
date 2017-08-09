@@ -43,7 +43,7 @@ submit.onclick = function(){
         
     };
     var inputname=document.getElementById('name');
-var inputvalue=inputname.value;
+var name=inputname.value;
     request.open('GET','http://gagireddykumarswamy.imad.hasura-app.io/submit-name?name' + name,true);
   request.send(null);
 
