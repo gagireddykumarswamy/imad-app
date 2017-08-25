@@ -91,7 +91,7 @@ app.get('/counter',function(req,res){
 
 app.get('/articals/:articalName',function(req,res){
     
-    pool.query("select * from artical where title" +req.params.articalName,function(err,result){
+    pool.query("select * from artical where title='" +req.params.articalName+"'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
