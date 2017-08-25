@@ -89,8 +89,22 @@ app.get('/counter',function(req,res){
    res.send(counter.toString());
 });
 
-app.get('/artical-one',function(req,res){
-    res.send(createTemplate(articalOne));
+app.get('/articals/artical-one',function(req,res){
+    
+    pool.query("select * from artical where title" +req.params.articalName,function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            if(result.rows.length === 0){
+                res.status(404).send("artical not found");
+            }else{
+                var articalData=result.rows[0];
+                res.send(createTemplate(articalData));
+            }
+        }
+        
+    } );
+    
 });
 
 app.get('/artical-tw0',function(req,res){
