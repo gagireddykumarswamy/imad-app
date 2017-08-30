@@ -148,7 +148,7 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
             if(result.rows.length === 0){
-                res.send(403).send("username and pasword not valid");
+                res.send(403).send('username and pasword not valid');
             }else{
                 var dbString=result.roes[0].password;
                 var salt=dbString.split('$')[2];
