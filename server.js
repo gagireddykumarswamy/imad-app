@@ -116,7 +116,7 @@ function hash(input,salt){
 app.get('/hash/:input',function(req,res){
     
     var hashedString=hash(req.params.input,'this-is-random-string');
-    res.send(hashedstring);
+    res.send(hashedString);
 });
 
 app.get('/artical-tw0',function(req,res){
