@@ -148,10 +148,16 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
             if(result.rows.length === 0){
-                res.status(403).send("username and pasword not valid");
+                res.send(403).send("username and pasword not valid");
             }else{
                 var dbString=result.roes[0].password;
-                var salt=
+                var salt=dbString.split('$')[2];
+                var hashedPassword=hash(password,salt);
+                if(hashedPassword === dbString){
+                    res.send("credentials are correct");
+                }else{
+                    res.send(403).send("username and password invalid");
+                }
                 
             }
         }
